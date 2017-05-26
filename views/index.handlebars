@@ -1,0 +1,62 @@
+<div class="jumbotron">
+<h1 id="title">Rescue me!</h1>
+<img src="http://press.cvuhs.org/cvc/wp-content/uploads/sites/4/2015/12/animal-shelter.jpg" alt="dogs in shelter" id="mainpic">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Dogs that are not adopted</h2>
+				<ul>
+					{{#each dogs}}
+						{{#unless this.adopted}}
+							<li>
+								<p class="form-control">Name: {{this.name}}<br>Breed: {{this.breed}}</p>
+								
+								<form action="/{{this.name}}?_method=PUT" method="POST">
+									<input class="form-control" type="text" name="owner">
+									<button type="submit" class="btn btn-secondary">Adopt</button>
+								</form>
+								
+							</li>
+						{{/unless}}
+					{{/each}}
+				</ul>
+		</div>
+		<div class="col-md-4">
+			<h2>Dogs that are adopted</h2>
+
+				<ul>
+					{{#each dogs}}
+						{{#if this.adopted}}
+							<li>
+								{{this.name}}
+								{{this.breed}}
+								by
+								{{Owner.name}}
+							</li>
+						{{/if}}
+					{{/each}}
+				</ul>
+		</div>
+		<div class="col-md-4">
+			<h2>Add a Dog</h2>
+
+				<form class="create-update-form" action="/" method="POST">
+					<div class="form-group row">
+						<label for="dog" class="col-3 col-form-label">Dog Name:</label>
+						<div class="col-9">
+						<input class="form-control" type="text" name="name">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="bree" class="col-3 col-form-label"> Breed: </label>
+						<div class="col-9">
+						<input class="form-control" type="text" name="breed">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success">Add Dog</button>
+				</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+CREATE DATABASE dogs_db;
+
+USE dogs_db;
+
+CREATE TABLE dogs(
+	id INT AUTO_INCREMENT NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	breed VARCHAR(50) NOT NULL,
+	adopted BOOLEAN,
+	date TIMESTAMP,
+	PRIMARY KEY(id)
+);

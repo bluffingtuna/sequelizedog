@@ -1,1 +1,1 @@
-# sequelizedog
+# dogs
